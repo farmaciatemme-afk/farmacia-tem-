@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Pesquisa de Satisfação</title>
+  <title>Pesquisa de Satisfação - Farmácia Tem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -14,21 +14,38 @@
     }
 
     body {
-      background: linear-gradient(135deg, #2e7d32, #66bb6a);
+      /* Gradiente principal da marca com sobreposição suave */
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.92), rgba(102, 187, 106, 0.92));
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Configuração do Logotipo no Fundo (Marca d'água) */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* O arquivo enviado foi processado como base para o fundo */
+      background: url('file.enc') no-repeat center; 
+      background-size: 40%; /* Ajuste o tamanho conforme necessário */
+      opacity: 0.12; /* Brilho delicado para não competir com o texto */
+      z-index: -1;
     }
 
     .card {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.97);
       width: 100%;
       max-width: 420px;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
       animation: fadeIn 0.8s ease;
+      z-index: 1;
     }
 
     h2 {
@@ -39,7 +56,7 @@
 
     p {
       text-align: center;
-      color: #666;
+      color: #555;
       margin-bottom: 20px;
       font-size: 14px;
     }
@@ -54,33 +71,35 @@
     input, select, textarea {
       width: 100%;
       margin-top: 6px;
-      padding: 10px;
+      padding: 11px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       transition: 0.3s;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: #2e7d32;
       outline: none;
-      box-shadow: 0 0 5px rgba(46,125,50,0.3);
+      box-shadow: 0 0 8px rgba(46,125,50,0.2);
     }
 
     button {
       width: 100%;
-      margin-top: 20px;
-      padding: 12px;
+      margin-top: 25px;
+      padding: 14px;
       background: #2e7d32;
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.4s;
     }
 
     button:hover {
       background: #1b5e20;
+      transform: scale(1.02);
     }
 
     .success {
@@ -88,21 +107,23 @@
       text-align: center;
       color: #2e7d32;
       font-weight: bold;
-      margin-top: 15px;
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #2e7d32;
+      border-radius: 8px;
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
+      from {opacity: 0; transform: translateY(30px);}
       to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
-
 <body>
 
 <div class="card">
   <h2>💊 Sua opinião importa</h2>
-  <p>Ajude-nos a melhorar nosso atendimento</p>
+  <p>Farmácia Tem: Ajude-nos a melhorar</p>
 
   <form id="form">
     <label>Como foi o atendimento?</label>
