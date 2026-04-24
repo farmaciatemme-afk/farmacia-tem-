@@ -4,166 +4,55 @@
   <meta charset="UTF-8">
   <title>Pesquisa de Satisfação - Farmácia Tem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     body {
-      background: linear-gradient(135deg, rgba(46, 125, 50, 0.92), rgba(102, 187, 106, 0.92));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(102, 187, 106, 0.9));
+      display: flex; justify-content: center; align-items: center; min-height: 100vh;
+      position: relative; overflow: hidden;
     }
-
-    /* Ajuste do Logotipo no Fundo */
+    /* Marca d'água do Logotipo */
     body::before {
       content: "";
       position: absolute;
-      width: 100%;
-      height: 100%;
-      /* ATENÇÃO: Substitua 'logo.png' pelo nome exato do arquivo que você subiu no GitHub */
-      background: url('logo.png') no-repeat center; 
-      background-size: 60%; /* Aumentei um pouco para dar destaque no mobile */
-      opacity: 0.15; /* Brilho delicado conforme sua identidade visual */
+      width: 100%; height: 100%;
+      background: url('logo.jpg') no-repeat center center;
+      background-size: 300px;
+      opacity: 0.15;
       z-index: -1;
     }
-
     .card {
-      background: rgba(255, 255, 255, 0.97);
-      width: 90%; /* Ajustado para melhor responsividade mobile */
-      max-width: 420px;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-      animation: fadeIn 0.8s ease;
-      z-index: 1;
+      background: #fff; width: 90%; max-width: 420px; padding: 30px;
+      border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-
-    h2 {
-      text-align: center;
-      color: #2e7d32;
-      margin-bottom: 10px;
-    }
-
-    p {
-      text-align: center;
-      color: #555;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    label {
-      margin-top: 12px;
-      display: block;
-      font-weight: 600;
-      color: #333;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      margin-top: 6px;
-      padding: 11px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      transition: 0.3s;
-      font-size: 16px; /* Evita zoom automático no iPhone */
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: #2e7d32;
-      outline: none;
-      box-shadow: 0 0 8px rgba(46,125,50,0.2);
-    }
-
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 14px;
-      background: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.4s;
-    }
-
-    button:hover {
-      background: #1b5e20;
-      transform: scale(1.02);
-    }
-
-    .success {
-      display: none;
-      text-align: center;
-      color: #2e7d32;
-      font-weight: bold;
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #2e7d32;
-      border-radius: 8px;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 10px; }
+    p { text-align: center; color: #666; margin-bottom: 20px; font-size: 14px; }
+    label { margin-top: 12px; display: block; font-weight: 600; color: #333; }
+    input, select, textarea { width: 100%; margin-top: 6px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; }
+    button { width: 100%; margin-top: 20px; padding: 12px; background: #2e7d32; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    button:hover { background: #1b5e20; }
+    .success { display: none; text-align: center; color: #2e7d32; font-weight: bold; margin-top: 15px; }
   </style>
 </head>
 <body>
-
 <div class="card">
   <h2>💊 Sua opinião importa</h2>
   <p>Farmácia Tem: Ajude-nos a melhorar</p>
-
   <form id="form">
     <label>Como foi o atendimento?</label>
-    <select required>
-      <option value="">Selecione</option>
-      <option>Excelente</option>
-      <option>Bom</option>
-      <option>Regular</option>
-      <option>Ruim</option>
-    </select>
-
+    <select required><option value="">Selecione</option><option>Excelente</option><option>Bom</option><option>Regular</option><option>Ruim</option></select>
     <label>Encontrou o que precisava?</label>
-    <select required>
-      <option value="">Selecione</option>
-      <option>Sim</option>
-      <option>Não</option>
-    </select>
-
+    <select required><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
     <label>O que você procurava?</label>
     <input type="text" placeholder="Ex: medicamentos, vitaminas...">
-
     <label>Voltaria a comprar conosco?</label>
-    <select required>
-      <option value="">Selecione</option>
-      <option>Sim</option>
-      <option>Talvez</option>
-      <option>Não</option>
-    </select>
-
+    <select required><option value="">Selecione</option><option>Sim</option><option>Talvez</option><option>Não</option></select>
     <label>Sugestões</label>
     <textarea rows="3" placeholder="Deixe sua opinião..."></textarea>
-
     <button type="submit">Enviar avaliação</button>
   </form>
-
-  <div class="success" id="msg">
-    ✅ Obrigado pela sua resposta!
-  </div>
+  <div class="success" id="msg">✅ Obrigado pela sua resposta!</div>
 </div>
-
 <script>
   document.getElementById("form").addEventListener("submit", function(e){
     e.preventDefault();
@@ -171,6 +60,5 @@
     this.reset();
   });
 </script>
-
 </body>
 </html>
