@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pesquisa de Satisfação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #2e7d32, #66bb6a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    label {
+      margin-top: 12px;
+      display: block;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #2e7d32;
+      outline: none;
+      box-shadow: 0 0 5px rgba(46,125,50,0.3);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1b5e20;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      color: #2e7d32;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>💊 Sua opinião importa</h2>
+  <p>Ajude-nos a melhorar nosso atendimento</p>
+
+  <form id="form">
+    <label>Como foi o atendimento?</label>
+    <select required>
+      <option value="">Selecione</option>
+      <option>Excelente</option>
+      <option>Bom</option>
+      <option>Regular</option>
+      <option>Ruim</option>
+    </select>
+
+    <label>Encontrou o que precisava?</label>
+    <select required>
+      <option value="">Selecione</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <label>O que você procurava?</label>
+    <input type="text" placeholder="Ex: medicamentos, vitaminas...">
+
+    <label>Voltaria a comprar conosco?</label>
+    <select required>
+      <option value="">Selecione</option>
+      <option>Sim</option>
+      <option>Talvez</option>
+      <option>Não</option>
+    </select>
+
+    <label>Sugestões</label>
+    <textarea rows="3" placeholder="Deixe sua opinião..."></textarea>
+
+    <button type="submit">Enviar avaliação</button>
+  </form>
+
+  <div class="success" id="msg">
+    ✅ Obrigado pela sua resposta!
+  </div>
+</div>
+
+<script>
+  document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("msg").style.display = "block";
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
